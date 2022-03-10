@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Project ignores
+coco.names
+dataset.mp4
+yolov3-spp.cfg
+yolov3-spp.weights

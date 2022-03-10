@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "sturdy-octo-spork"
+version = "0.1.0"
+description = ""
+authors = ["aleksul <aleksandrsulimov@bk.ru>", "Wi1d10neW01f  <gameofsteam.ru@gmail.com>"]
+license = "GNU GPLv3"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+opencv-python = "^4.5.5"
+numpy = "^1.22.2"
+requests = "^2.27.1"
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
