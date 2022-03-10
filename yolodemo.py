@@ -7,7 +7,7 @@ import os
 
 path = r'F:\Users\admin\Downloads\99.mp4'#TODO #1 :изменить на путь к датасету.
 
-cap = cv2.VideoCapture(path)#для вывода видео
+cap = cv2.VideoCapture(0)#для вывода видео
 
 whT = 320#idk what is that
 confThreshold = 0.5
@@ -38,7 +38,7 @@ net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 #функция, для нахождения котиков UwU :з
 def findObjects(outputs,img):
-    hT, wT, cT = img.shape
+    hT, wT = img.shape
     bbox = []
     classIds = []
     confs = []
@@ -56,11 +56,10 @@ def findObjects(outputs,img):
                 confs.append(float(confidence))
     indices = cv2.dnn.NMSBoxes(bbox, confs, confThreshold, nmsThreshold)
     for i in indices:
-        if(classNames[classIds[i]]=='cat'):
-            box = bbox[i]
-            x, y, w, h = box[0], box[1], box[2], box[3]
-            cv2.rectangle(img, (int(x),int(y)), (int(x+w), int(y+h)), (255, 0, 0), 2)
-            cv2.putText(img, f'Cat {int(confs[i]*100)}%',(int(x),int(y-10)), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,0,255),2)
+        box = bbox[i]
+        x, y, w, h = box[0], box[1], box[2], box[3]
+        cv2.rectangle(img, (int(x),int(y)), (int(x+w), int(y+h)), (255, 0, 0), 2)
+        cv2.putText(img, f'WOLF {int(confs[i]*100)}%',(int(x),int(y-10)), cv2.FONT_HERSHEY_SIMPLEX,0.6,(255,0,255),2)
 
 while True:
     #TODO #2 изменить на while ролик не кончился *idk how btw*
@@ -80,5 +79,3 @@ while True:
     if keyboard.is_pressed("q"):##если не сделать TODO #2, то при нажатии q уберутся все окна и выполнение программы завершится.
         cv2.destroyAllWindows()
         break
-
-
